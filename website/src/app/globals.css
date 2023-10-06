@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @apply text-text
+}
+
+/* Global components */
+
+.dd_link{
+  @apply text-primary underline-offset-2 hover:underline
+}
+
+.main_grid{
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 96px 1fr;
+}
+
+.nav_link{
+  @apply p-2 rounded-lg flex items-center gap-2 hover:bg-bg2 transition
+}
+.nav_link.active{
+  @apply text-primary bg-primary_transparent fill-primary hover:bg-primary_transparent
+}
+
+@media screen and (max-width: 1023px) {
+  .main_grid{
+   grid-template-columns: 96px 1fr;
+  }
+  .nav_link{
+    @apply w-max m-auto rounded-full;
+  }
+}
+
+
+
