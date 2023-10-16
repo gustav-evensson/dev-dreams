@@ -5,15 +5,12 @@ export const metadata: Metadata = {
     description: "Browse, Search and Save Jobs",
 };
 
-import SideBar from "@/src/components/SideBar";
-import TopBar from "@/src/components/TopBar";
-import MainView from "@/src/components/MainView";
+import SideBar from "@/src/components/SideBar/SideBar";
 
 export default function JobsDashboard({ children }: { children: React.ReactNode }) {
     return (
-        <main className="h-screen main_grid">
+        <main className="h-screen flex overflow-hidden">
             <SideBar />
-            <TopBar />
             {children}
         </main>
     );

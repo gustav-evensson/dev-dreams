@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @apply text-text;
+}
+
+/* Global components */
+
+.dd_link{
+  @apply text-primary border-b border-transparent transition hover:border-primary;
+}
+
+.dd_dropdown{
+
+}
