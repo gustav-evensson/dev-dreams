@@ -2,6 +2,7 @@
 
 import SideBarBtn from "./SideBarBtn";
 import Dropdown from "./DropDown";
+import LocationSearch from "./LocationSearch";
 
 import Image from "next/image";
 
@@ -9,12 +10,19 @@ import searchIcon from "@/public/icons/TopBar/search_24x24_clr.svg";
 import filterIcon from "@/public/icons/TopBar/filter_24x24_clr.svg";
 import globeIcon from "@/public/icons/TopBar/globe_20x20.svg";
 import clockIcon from "@/public/icons/TopBar/clock_20x20.svg";
+import locationIcon from "@/public/icons/TopBar/location_20x20.svg";
+
 import { useState } from "react";
 
 export default function TopBar() {
 
     const [showSearch, setShowSearch] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
+
+    const onSearchChange = (value: string) => {
+        console.log("Received: ", value);
+        return value;
+    }
 
     return (
         <div>
@@ -45,6 +53,7 @@ export default function TopBar() {
                 </div>
                 {/* Fore large screens */}
                 <div className="gap-3 hidden lg:flex">
+                    <LocationSearch icon={locationIcon} onChange={onSearchChange} placeholder="Search location..."/>
                     <Dropdown options={["Remote", "Hybrid", "On site"]} icon={globeIcon} />
                     <Dropdown options={["Full-time", "Part-time", "Internship"]} icon={clockIcon} />
                 </div>
