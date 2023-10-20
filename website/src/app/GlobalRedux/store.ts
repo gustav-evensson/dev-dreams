@@ -2,11 +2,12 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import sideBarReducer from "./Features/sideBar/sideBarSlice";
-import { config } from "process";
+import filterReducer from "./Features/filter/filterSlice";
 
 export const store = configureStore({
     reducer: {
         sideBar: sideBarReducer,
+        filter: filterReducer,
     },
 });
 

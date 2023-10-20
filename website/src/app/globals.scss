@@ -15,6 +15,6 @@
   @apply text-primary border-b border-transparent transition hover:border-primary;
 }
 
-.dd_dropdown{
-
+.dd_action_object{
+  @apply border border-border transition rounded-xl p-3 focus-within:border-text
 }

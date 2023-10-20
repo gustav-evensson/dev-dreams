@@ -35,7 +35,7 @@ export default function LocationSearch({ icon, onChange, placeholder }: Props) {
     return (
         <label
             htmlFor="searchBar"
-            className="cursor-text flex border border-border transition rounded-xl p-3 min-w-[200px] w-80 items-center gap-3 relative focus-within:border-text"
+            className="dd_action_object cursor-text flex min-w-[200px] max-w-sm items-center gap-3 relative"
         >
             <Image src={icon} width={20} height={20} alt="dropdown icon" className="grayscale" />
             <input

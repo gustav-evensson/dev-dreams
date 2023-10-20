@@ -1,28 +1,44 @@
 "use client";
 
+// Components
 import SideBarBtn from "./SideBarBtn";
 import Dropdown from "./DropDown";
 import LocationSearch from "./LocationSearch";
 
-import Image from "next/image";
-
+// Assets
 import searchIcon from "@/public/icons/TopBar/search_24x24_clr.svg";
 import filterIcon from "@/public/icons/TopBar/filter_24x24_clr.svg";
 import globeIcon from "@/public/icons/TopBar/globe_20x20.svg";
 import clockIcon from "@/public/icons/TopBar/clock_20x20.svg";
 import locationIcon from "@/public/icons/TopBar/location_20x20.svg";
 
-import { useState } from "react";
+// Redux imports
+import { useDispatch } from "react-redux";
+import { setAll } from "../app/GlobalRedux/Features/filter/filterSlice";
+
+// Next assets
+import Image from "next/image";
+
+// React
+import { useEffect, useState } from "react";
 
 export default function TopBar() {
+    const dispatch = useDispatch();
 
+    // Controls the visibility of the search bar and filter bar
     const [showSearch, setShowSearch] = useState(false);
     const [showFilter, setShowFilter] = useState(false);
 
-    const onSearchChange = (value: string) => {
-        console.log("Received: ", value);
-        return value;
-    }
+    // Filter states
+    const [site, setSite] = useState<string>("Not selected");
+    const [type, setType] = useState<string>("Not selected");
+    const [location, setLocation] = useState<string>("");
+    const [job, setJob] = useState<string>("");
+
+    // Update the filter state in the redux store
+    useEffect(() => {
+        dispatch(setAll({ site, type, location, job }));
+    }, [site, type, location, job]);
 
     return (
         <div>
@@ -53,9 +69,9 @@ export default function TopBar() {
                 </div>
                 {/* Fore large screens */}
                 <div className="gap-3 hidden lg:flex">
-                    <LocationSearch icon={locationIcon} onChange={onSearchChange} placeholder="Search location..."/>
-                    <Dropdown options={["Remote", "Hybrid", "On site"]} icon={globeIcon} />
-                    <Dropdown options={["Full-time", "Part-time", "Internship"]} icon={clockIcon} />
+                    <LocationSearch icon={locationIcon} onChange={(emit) => setLocation(emit)} placeholder="Search location..." />
+                    <Dropdown options={["Not selected", "Remote", "Hybrid", "On site"]} emit={(emit) => setSite(emit)} icon={globeIcon} />
+                    <Dropdown options={["Not selected", "Full-time", "Part-time", "Internship"]} emit={(emit) => setType(emit)} icon={clockIcon} />
                 </div>
             </div>
         </div>
