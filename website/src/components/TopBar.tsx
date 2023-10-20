@@ -30,8 +30,8 @@ export default function TopBar() {
     const [showFilter, setShowFilter] = useState(false);
 
     // Filter states
-    const [site, setSite] = useState<string>("Not selected");
-    const [type, setType] = useState<string>("Not selected");
+    const [site, setSite] = useState<string>("Show all");
+    const [type, setType] = useState<string>("Show all");
     const [location, setLocation] = useState<string>("");
     const [job, setJob] = useState<string>("");
 
@@ -70,8 +70,8 @@ export default function TopBar() {
                 {/* Fore large screens */}
                 <div className="gap-3 hidden lg:flex">
                     <LocationSearch icon={locationIcon} onChange={(emit) => setLocation(emit)} placeholder="Search location..." />
-                    <Dropdown options={["Not selected", "Remote", "Hybrid", "On site"]} emit={(emit) => setSite(emit)} icon={globeIcon} />
-                    <Dropdown options={["Not selected", "Full-time", "Part-time", "Internship"]} emit={(emit) => setType(emit)} icon={clockIcon} />
+                    <Dropdown options={["Show all", "Remote", "Hybrid", "On site"]} emit={(emit) => setSite(emit)} icon={globeIcon} />
+                    <Dropdown options={["Show all", "Full-time", "Part-time", "Internship"]} emit={(emit) => setType(emit)} icon={clockIcon} />
                 </div>
             </div>
         </div>

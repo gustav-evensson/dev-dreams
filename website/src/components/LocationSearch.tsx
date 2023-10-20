@@ -19,11 +19,8 @@ export default function LocationSearch({ icon, onChange, placeholder }: Props) {
 
     async function handleInput(value: string) {
         // fetch options from server
-        console.log("fetching options from server...", value);
         const results = await getResults(value);
-        console.log("results", results.value);
         setOptions(results.value);
-        console.log("options", options);
     }
 
     function handleSelect(value: string) {
@@ -59,7 +56,7 @@ export default function LocationSearch({ icon, onChange, placeholder }: Props) {
                     <button
                         key={index}
                         tabIndex={options.length > 0 ? 0 : -1}
-                        className="w-full text-sm p-3 hover:bg-bg2 text-left"
+                        className="w-full text-sm p-3 outline-none hover:bg-bg2 focus:bg-bg2 text-left"
                         onClick={() => handleSelect(option)}
                     >
                         {option}
