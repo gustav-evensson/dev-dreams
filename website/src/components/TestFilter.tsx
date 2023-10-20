@@ -1,12 +1,12 @@
 "use client"
 
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
+import { RootState } from "../app/GlobalRedux/store"
 
 
 export default function TestFilter() {
 
-    const dispatch = useDispatch()
-    const filter = useSelector((state: any) => state.filter)
+    const filter = useSelector((state: RootState) => state.filter)
 
     return (
         <ul>

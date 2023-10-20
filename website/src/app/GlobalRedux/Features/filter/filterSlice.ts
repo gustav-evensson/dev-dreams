@@ -27,7 +27,7 @@ export const filterSlice = createSlice({
         setAll: (state, value) => {
             state.location = value.payload.location
             state.site = value.payload.site
-            state.type = value.payload.types
+            state.type = value.payload.type
             state.job = value.payload.job
         }
     }
