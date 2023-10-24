@@ -1,15 +1,21 @@
+// Next
 import Image from "next/image";
+
+// React
 import { useState } from "react";
 
+// Assets
+import locationIcon from "@/public/icons/TopBar/location_20x20.svg";
+
 type Props = {
-    icon: any;
+    initial?: string;
     placeholder?: string;
     onChange?: (value: string) => void;
 };
 
-export default function LocationSearch({ icon, onChange, placeholder }: Props) {
+export default function LocationSearch({initial, onChange, placeholder }: Props) {
     const [options, setOptions] = useState<string[]>([]);
-    const [search, setSearch] = useState<string>("");
+    const [search, setSearch] = useState<string>(initial || "");
 
     async function getResults(value: string) {
         const res = await fetch(`http://localhost:3000/api/geoLocation?query=${value}`);
@@ -34,7 +40,7 @@ export default function LocationSearch({ icon, onChange, placeholder }: Props) {
             htmlFor="searchBar"
             className="dd_action_object cursor-text flex min-w-[200px] max-w-sm items-center gap-3 relative"
         >
-            <Image src={icon} width={20} height={20} alt="dropdown icon" className="grayscale" />
+            <Image src={locationIcon} width={20} height={20} alt="dropdown icon" className="grayscale" />
             <input
                 onChange={(e) => {
                     handleInput(e.target.value);

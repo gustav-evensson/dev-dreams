@@ -7,13 +7,14 @@ import { useState } from "react";
 import Image from "next/image";
 
 type Props = {
+    initial?: string;
     options: string[];
     icon: any;
     emit: (value: string) => void;
 };
 
-export default function Dropdown({ options, icon, emit }: Props) {
-    const [selected, setSelected] = useState(options[0]);
+export default function Dropdown({ initial, options, icon, emit }: Props) {
+    const [selected, setSelected] = useState(initial || options[0]);
     const [show, setShow] = useState(false);
 
     function handleKeyDown(e: any) {

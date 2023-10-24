@@ -9,12 +9,13 @@ import { useState } from "react";
 import searchIcon from "@/public/icons/TopBar/search_20x20.svg";
 
 type Props = {
+    initial?: string;
     placeholder?: string;
     emit: (value: string) => void;
 };
 
-export default function LocationSearch({ emit, placeholder }: Props) {
-    const [search, setSearch] = useState<string>("");
+export default function LocationSearch({initial, emit, placeholder }: Props) {
+    const [search, setSearch] = useState<string>(initial || "");
 
     return (
         <label
