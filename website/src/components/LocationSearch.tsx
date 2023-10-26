@@ -40,7 +40,7 @@ export default function LocationSearch({initial, onChange, placeholder }: Props)
             htmlFor="searchBar"
             className="dd_action_object cursor-text flex min-w-[200px] max-w-sm items-center gap-3 relative"
         >
-            <Image src={locationIcon} width={20} height={20} alt="dropdown icon" className="grayscale" />
+            <Image draggable="false" src={locationIcon} width={20} height={20} alt="dropdown icon" className="grayscale" />
             <input
                 onChange={(e) => {
                     handleInput(e.target.value);

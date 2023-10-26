@@ -15,7 +15,7 @@ import clockIcon from "@/public/icons/TopBar/clock_20x20.svg";
 
 // Next assets
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 // React
 import { useEffect, useState } from "react";
@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 export default function TopBar() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const pathname = usePathname();
 
     // Controls the visibility of the search bar and filter bar
     const [showSearch, setShowSearch] = useState(false);
@@ -30,22 +31,26 @@ export default function TopBar() {
 
     // TODO: Error if someone edits the urls query params in the browser
     // Filter states
-    const [site, setSite] = useState<string>(searchParams.get('site') || "Show all");
-    const [type, setType] = useState<string>(searchParams.get('type') || "Show all");
-    const [location, setLocation] = useState<string>(searchParams.get('location') || "");
-    const [job, setJob] = useState<string>(searchParams.get('job') || "");
+    const [site, setSite] = useState<string>(searchParams.get("site") || "Show all");
+    const [type, setType] = useState<string>(searchParams.get("type") || "Show all");
+    const [location, setLocation] = useState<string>(searchParams.get("location") || "");
+    const [job, setJob] = useState<string>(searchParams.get("job") || "");
 
     // Update the filter state in the redux store
     useEffect(() => {
-        router.push(`?${new URLSearchParams({ site, type, location, job }).toString()}`);
-    }, [site, type, location, job]);
+        if (pathname === "/job-board/jobs") {
+            router.push(`?${new URLSearchParams({ site, type, location, job }).toString()}`);
+        }
+    }, [site, type, location, job, pathname]);
 
     return (
         <div>
-            <div className="border-b border-border w-full h-fit flex items-center justify-between p-4">
+            <div
+                className={`border-b border-border w-full h-fit flex items-center justify-between p-4`}
+            >
                 {/* For small screens */}
                 <SideBarBtn />
-                <div className="h-6 flex gap-4 lg:hidden">
+                <div className="h-6 flex gap-4 xl:hidden">
                     <button onClick={() => setShowSearch(!showSearch)}>
                         <Image
                             draggable="false"
@@ -68,11 +73,16 @@ export default function TopBar() {
                     </button>
                 </div>
                 {/* Fore large screens */}
-                <div className="gap-3 hidden lg:flex">
+                <div className="gap-3 hidden xl:flex">
                     <SearchBar initial={job} placeholder="Search job title..." emit={(emit) => setJob(emit)} />
                     <LocationSearch initial={location} onChange={(emit) => setLocation(emit)} placeholder="Search location..." />
                     <Dropdown initial={site} options={["Show all", "Remote", "Hybrid", "On site"]} emit={(emit) => setSite(emit)} icon={globeIcon} />
-                    <Dropdown initial={type} options={["Show all", "Full-time", "Part-time", "Internship"]} emit={(emit) => setType(emit)} icon={clockIcon} />
+                    <Dropdown
+                        initial={type}
+                        options={["Show all", "Full-time", "Part-time", "Internship"]}
+                        emit={(emit) => setType(emit)}
+                        icon={clockIcon}
+                    />
                 </div>
             </div>
         </div>

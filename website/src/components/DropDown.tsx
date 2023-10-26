@@ -41,7 +41,7 @@ export default function Dropdown({ initial, options, icon, emit }: Props) {
                 show ? "border-text" : ""
             }`}
         >
-            <Image src={icon} width={20} height={20} alt="dropdown icon" />
+            <Image draggable="false" src={icon} width={20} height={20} alt="dropdown icon" />
             <span>{selected}</span>
             <div
                 className={`overflow-auto max-h-sm absolute bottom-[-4px] left-0 translate-y-full w-full min-w-fit bg-bg border border-border rounded-xl transition ${

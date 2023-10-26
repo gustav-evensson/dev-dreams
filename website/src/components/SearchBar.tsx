@@ -22,7 +22,7 @@ export default function LocationSearch({initial, emit, placeholder }: Props) {
             htmlFor="searchBar"
             className="cursor-text flex border border-border transition rounded-xl p-3 min-w-[200px] max-w-sm items-center gap-3 relative focus-within:border-text"
         >
-            <Image src={searchIcon} width={20} height={20} alt="dropdown icon" />
+            <Image draggable="false" src={searchIcon} width={20} height={20} alt="dropdown icon" />
             <input
                 onChange={(e) => {
                     emit(e.target.value);

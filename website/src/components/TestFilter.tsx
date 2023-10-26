@@ -1,19 +1,16 @@
-"use client"
-
-import { useSelector } from "react-redux"
-import { RootState } from "../app/GlobalRedux/store"
-
-
-export default function TestFilter() {
-
-    const filter = useSelector((state: RootState) => state.filter)
+export default function TestFilter({ searchParams, }: { searchParams: {[key: string]: string | string[] | undefined}  }) {
+    
+    const site = searchParams.site || ""
+    const type = searchParams.type || ""
+    const location = searchParams.location || ""
+    const job = searchParams.job || ""
 
     return (
         <ul>
-            <li>{filter.site}</li>
-            <li>{filter.type}</li>
-            <li>{filter.location}</li>
-            <li>{filter.job}</li>
+            <li>{site}</li>
+            <li>{type}</li>
+            <li>{location}</li>
+            <li>{job}</li>
         </ul>
     )
 }

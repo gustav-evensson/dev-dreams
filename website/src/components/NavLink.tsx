@@ -25,7 +25,7 @@ export default function NavLink({ href, text, icon }: Props) {
 
     return (
         <button
-            className={`w-max m-auto rounded-full transition hover:bg-bg2 flex items-center gap-2 p-2 lg:w-full lg:rounded-lg  ${
+            className={`w-max m-auto rounded-full transition hover:bg-bg2 flex items-center gap-2 p-2 xl:w-full xl:rounded-lg  ${
                 pathname === href ? "text-primary bg-primary_transparent fill-primary hover:bg-primary_transparent" : ""
             }`}
             onClick={navigate}
@@ -38,7 +38,7 @@ export default function NavLink({ href, text, icon }: Props) {
                 height={24}
                 alt={`${text} icon`}
             />
-            <span className="hidden lg:block">{text}</span>
+            <span className="hidden xl:block">{text}</span>
         </button>
     );
 }

@@ -14,7 +14,7 @@ export default function SideBarBtn() {
     const dispatch = useDispatch();
 
     return (
-        <button onClick={() => dispatch(open())} className="block lg:hidden">
+        <button onClick={() => dispatch(open())} className="block xl:hidden">
             <Image draggable="false" src={sideBarImage} width={24} height={24} alt="sidebar image" />
         </button>
     );
